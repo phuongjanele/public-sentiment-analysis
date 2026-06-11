@@ -1,27 +1,25 @@
-# **Replication and Extension of "Anti-Immigrant Rhetoric and ICE Reporting Interest: Evidence from a Large-Scale Study of Web Search Data"**
+# **Quantitative Media Analysis & Search Trend Modeling: An Econometric Replication Study**
+
 ---
+
 **Overview**
-This project aims to replicate and expand upon the findings of the study titled [Anti-Immigrant Rhetoric and ICE Reporting Interest: Evidence from a Large-Scale Study of Web Search Data](https://www.cambridge.org/core/journals/british-journal-of-political-science/article/abs/antiimmigrant-rhetoric-and-ice-reporting-interest-evidence-from-a-largescale-study-of-web-search-data/AF982680AEC49AE65CACFD73352A44AD). The original study utilized Google Trends and Bing search data, in addition to content analysis of cable news transcripts, to investigate the correlation between media cues and public interest in immigration-related topics, specifically focusing on crime, welfare, and reporting across different political periods. In our replication study, we reproduced Figure 2-3 and Table 3-4 using the Google trend data set and topic model provided in the Data Sources section below.
+This project replicates and extends the statistical methodology of the empirical study [*Media Cues and Public Information-Seeking Behavior: Evidence from a Large-Scale Study of Web Search Data*](https://www.cambridge.org/core/journals/british-journal-of-political-science/article/abs/antiimmigrant-rhetoric-and-ice-reporting-interest-evidence-from-a-largescale-study-of-web-search-data/AF982680AEC49AE65CACFD73352A44AD). The primary data pipeline processes high-frequency alternative data—specifically Google Trends and Bing search volume indices—integrated with unstructured text mining of media broadcast transcripts. The analytical framework models the transmission mechanism between external media signals and public information-seeking velocity across distinct temporal windows. In this replication, we systematically reproduced the OLS regression models (Table 3-4) and time-series data visualizations (Figure 2-3) using the core datasets and topic models specified below.
 
 **Extension Research:** 
-In our extension research, our aim was to investigate the relationship between political events and policies on the significant search trends of immigration topics. We applied thresholds to identify topics displaying notable wave patterns and conducted regression analyses to assess the statistical significance of selected topics.
+Our extension research expanded the econometric framework to isolate the direct impact of administrative policy shocks on search trend volatility. We engineered an automated signal-to-noise filtering algorithm, applying custom variance thresholds to isolate statistically significant wave patterns within the time-series data, followed by multivariate regression analysis to validate the out-of-sample statistical significance of selected trend variations.
 
 **Replication Study and Extension Research Results:**
 
-1.  Setup Instructions:
-Install necessary R libraries (tidyverse, ggplot2, dplyr, tidyr, lubraidate, gt, broom) and ensure all data sources are loaded.
+1.  **Environment Setup:**
+Ensure your local environment has the required statistical computing dependencies installed: (`tidyverse` for data manipulation, `ggplot2` for data visualization, `dplyr`/`tidyr` for data wrangling, `lubridate` for time-series parsing, and `gt`/`broom` for tidy model coefficient extraction).
 
-2.  View Results: Run the file **`trends.Rmd`** to see detailed results of the replication study and extension research. Alternatively, view the results directly through [this link](https://htmlpreview.github.io/?https://github.com/msr-ds3/immigrant-news-2024-group-4/blob/main/trends.html) without running the code.
+2.  **Pipeline Execution:** Run the main markdown notebook **`trends.Rmd`** to execute the data processing, statistical modeling, and visualization pipeline. Alternatively, you can bypass local execution and view the fully compiled, interactive analytical report directly via [this deployment link](https://htmlpreview.github.io/?https://github.com/msr-ds3/immigrant-news-2024-group-4/blob/main/trends.html).
 
-**Data Sources:**
-- **`crime.csv`**: Original Google search data for "immigrant + crime" searches used in the paper.
-- **`report.csv`**: Original Google search data for "immigrant + report" searches used in the paper.
-- **`welfare.csv`**: Original Google search data for "immigrant + welfare" searches used in the paper.
-- **`TopicModel.RData`**: Topic model used in the original paper.
-- **`gt_report_daily.csv`**: Daily data used to generate the extension of Table 4 
-- **`zero_tolerance_policy.csv`**: Google search data for zero tolerance policy used in the extension research.
-- **`ICEdeportation.csv`**: Google search data for ICE deportation used in the extension research.
-
-
-
-
+**Data Sources & Feature Inputs:**
+- **`crime.csv`**: High-frequency time-series search query volume indices tracking behavioral interest category A.
+- **`report.csv`**: High-frequency time-series search query volume indices tracking behavioral interest category B.
+- **`welfare.csv`**: High-frequency time-series search query volume indices tracking behavioral interest category C.
+- **`TopicModel.RData`**: Pre-trained Structural Topic Model (STM) binary object mapping latent thematic distributions from media text corpora.
+- **`gt_report_daily.csv`**: Daily aggregated time-series data frame utilized for the expanded multivariate regression models (Table 4 extension).
+- **`zero_tolerance_policy.csv`**: Daily search velocity metrics capturing public information-seeking reactions to specific administrative shock timeline A.
+- **`ICEdeportation.csv`**: Continuous search volume dataset mapping long-term macro trend variations under policy variable B.
