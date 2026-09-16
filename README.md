@@ -1,4 +1,4 @@
-# **Study Replication and Extension: Anti-Immigration Rhetoric and ICE Reporting Interest**
+# **Study Replication and Extension: Anti-Immigrant Rhetoric and ICE Reporting Interest**
 
 ---
 
